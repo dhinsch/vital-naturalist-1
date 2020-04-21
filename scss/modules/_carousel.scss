@@ -1,0 +1,28 @@
+.slider {
+  grid-area: slider;
+  margin: auto;
+  align-self: center;
+
+  background-color: #e9eae4;
+  position: relative;
+
+  .slide {
+    width: 100%;
+    margin: auto;
+    opacity: 0;
+    position: relative;
+    display: none;
+    &.current {
+      opacity: 1;
+      display: block;
+
+      > img {
+        display: block;
+        object-fit: contain;
+        object-position: 50% 50%;
+        max-width: 60%;
+        margin: auto;
+      }
+    }
+  }
+}

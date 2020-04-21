@@ -1,0 +1,23 @@
+{
+  "name": "vital-naturalist-1",
+  "version": "1.0.0",
+  "description": "Vital Naturalist is a growing project created by Diane Hinsch that aims to connect you to nature through art and technology.",
+  "main": "index.js",
+  "scripts": {
+    "sass": "node-sass -r -w scss/ -o dist/css/",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dhinsch/vital-naturalist-1.git"
+  },
+  "author": "Diane Hinsch",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dhinsch/vital-naturalist-1/issues"
+  },
+  "homepage": "https://github.com/dhinsch/vital-naturalist-1#readme",
+  "dependencies": {
+    "node-sass": "^4.13.1"
+  }
+}

@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@400;700&display=swap');
+
+body {
+  color: #000;
+  font-family: 'Poppins', sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: $accent-color;
+  list-style: none;
+
+  &:hover {
+    color: #000;
+  }
+}
+
+.main-title {
+  letter-spacing: 0.3rem;
+  text-transform: lowercase;
+  padding-bottom: 2rem;
+  text-align: right;
+  font-weight: 700;
+  font-style: italic;
+
+  @include mediaMd {
+    text-align: center;
+  }
+}
+
+.icons {
+  text-align: center;
+  font-weight: bold;
+  padding: 2rem;
+
+  > a {
+    color: $primary-color;
+    padding: 1rem;
+  }
+}

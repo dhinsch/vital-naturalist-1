@@ -1,0 +1,24 @@
+.buttons button {
+  border: 3px solid #000;
+  background-color: transparent;
+  color: #000;
+  cursor: pointer;
+  padding: 10px 11px;
+  border-radius: 20%;
+  outline: none;
+  position: absolute;
+  top: 40%;
+
+  &:hover {
+    background-color: $primary-color;
+    color: #fff;
+  }
+
+  &#next {
+    right: 15px;
+  }
+
+  &#prev {
+    left: 15px;
+  }
+}

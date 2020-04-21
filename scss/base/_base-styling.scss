@@ -1,0 +1,45 @@
+.base-layout {
+  background-color: $accent-color;
+  > .header-nav {
+    background-color: $primary-color;
+  }
+
+  > .description {
+    background-color: $secondary-color;
+    padding: 2rem;
+    line-height: 2rem;
+    text-align: right;
+    > p {
+      padding: 1rem;
+      margin: auto;
+    }
+
+    @include mediaMd {
+      grid-area: description;
+      padding: 0.5rem;
+      text-align: center;
+
+      .icons > a {
+        padding: 1.5rem;
+      }
+    }
+
+    @include mediaSm {
+      padding: 2rem;
+      grid-area: description;
+      > p {
+        text-align: center;
+      }
+      .icons > a {
+        padding: 1rem;
+      }
+    }
+  }
+  > .slider {
+    background-color: $accent-color;
+  }
+  > .main-footer {
+    background-color: $primary-color;
+    color: $accent-color;
+  }
+}

@@ -1,0 +1,32 @@
+// Base Layout Styles/Grid
+
+.base-layout {
+  height: 100vh;
+  display: grid;
+  grid-template-areas: 'header-nav header-nav header-nav' 'description slider slider' 'description slider slider' 'footer footer footer';
+  grid-template-rows: 50px, auto, auto, 20px;
+  grid-template-columns: repeat(3, 1fr);
+
+  @include mediaMd {
+    grid-template-areas: 'header-nav' 'description' 'slider' 'footer';
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+
+  > .header-nav {
+    grid-area: header-nav;
+    @include mediaSm {
+      height: 14vh;
+    }
+  }
+
+  > .description {
+    grid-area: description;
+  }
+  > .slider {
+    grid-area: slider;
+  }
+
+  > .main-footer {
+    grid-area: footer;
+  }
+}

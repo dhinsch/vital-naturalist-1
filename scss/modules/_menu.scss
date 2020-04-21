@@ -1,0 +1,80 @@
+.menu {
+  &.hide {
+    visibility: hidden;
+  }
+
+  background-color: $primary-color;
+  width: 100%;
+  font-size: 1rem;
+  padding: 0;
+  @include mediaSm {
+    font-size: 1.5rem;
+    padding: 1rem;
+    font-weight: 300;
+
+    text-decoration: none;
+    .nav-item {
+      transform: translate3d(600px, 0, 0);
+      @include easeOut;
+
+      &.show {
+        // Slide In From Right To Center
+        transform: translate3d(0, 0, 0);
+      }
+
+      &.current > a {
+        color: $secondary-color;
+      }
+    }
+  }
+  > ul.menu-nav {
+    display: flex;
+    justify-content: flex-end;
+
+    @include mediaSm {
+      z-index: 5;
+      justify-content: center;
+      flex-flow: column wrap;
+      align-items: center;
+      text-align: center;
+      float: right;
+      width: 70%;
+      height: 100vh;
+      overflow: hidden;
+
+      //Start From Right
+      transform: translate3d(100%, 0, 0);
+      margin: 0;
+      padding: 0;
+
+      list-style: none;
+
+      @include easeOut;
+
+      &.show {
+        //Slide In From Right To Center
+        transform: translate3d(0, 0, 0);
+        background: $header-footer-bg;
+      }
+    }
+
+    & a {
+      padding: 1rem;
+    }
+
+    & li {
+      list-style: none;
+    }
+
+    .nav-link {
+      display: inline-block;
+      position: relative;
+      font-size: 1.2rem;
+      letter-spacing: 0.2rem;
+      text-transform: lowercase;
+      font-weight: 300;
+
+      @include easeOut;
+    }
+  }
+}
