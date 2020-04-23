@@ -1,4 +1,4 @@
-// Carousel Functionality
+// Carousel Functionality ***************************
 
 const slides = document.querySelectorAll('.slide');
 const nextBtn = document.querySelector('#next');
@@ -43,7 +43,7 @@ prevBtn.addEventListener('click', (e) => {
   prevSlide();
 });
 
-// Menu Button Functionality
+// Menu Button Functionality ****************************************
 
 //Select DOM items
 const menuBtn = document.querySelector('.menu-btn');

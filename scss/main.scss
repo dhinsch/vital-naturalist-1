@@ -6,8 +6,9 @@
 @import 'base/base-styling';
 @import 'base/mixins';
 
-// Layouts - Grid
-@import 'layout/layout-base';
+// Layouts
+@import 'layout/layout-home';
+@import 'layout/layout-secondary';
 
 // Modules
 @import 'modules/menu-btn';

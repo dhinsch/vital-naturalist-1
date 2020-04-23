@@ -1,10 +1,14 @@
-// Base Layout Styles/Grid
+// Homepage Base Layout
 
-.base-layout {
+.home {
   height: 100vh;
   display: grid;
-  grid-template-areas: 'header-nav header-nav header-nav' 'description slider slider' 'description slider slider' 'footer footer footer';
-  grid-template-rows: 50px, auto, auto, 20px;
+  grid-template-areas:
+    'header-nav header-nav header-nav'
+    'description slider slider'
+    'description slider slider'
+    'footer footer footer';
+  grid-template-rows: 50px, auto, 20px;
   grid-template-columns: repeat(3, 1fr);
 
   @include mediaMd {

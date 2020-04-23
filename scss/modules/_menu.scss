@@ -21,10 +21,6 @@
         // Slide In From Right To Center
         transform: translate3d(0, 0, 0);
       }
-
-      &.current > a {
-        color: $secondary-color;
-      }
     }
   }
   > ul.menu-nav {
@@ -75,6 +71,10 @@
       font-weight: 300;
 
       @include easeOut;
+
+      &.current {
+        font-style: italic;
+      }
     }
   }
 }

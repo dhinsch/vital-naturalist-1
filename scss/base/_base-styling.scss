@@ -1,5 +1,5 @@
-.base-layout {
-  background-color: $accent-color;
+body {
+  background-color: $secondary-color;
   > .header-nav {
     background-color: $primary-color;
   }
@@ -37,6 +37,12 @@
   }
   > .slider {
     background-color: $accent-color;
+  }
+  > .main-article {
+    > #find-me {
+      text-align: center;
+      padding: 0.5rem;
+    }
   }
   > .main-footer {
     background-color: $primary-color;
