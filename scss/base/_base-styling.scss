@@ -43,6 +43,9 @@ body {
       text-align: center;
       padding: 0.5rem;
     }
+    > #mapid {
+      height: 250px;
+    }
   }
   > .main-footer {
     background-color: $primary-color;

@@ -33,7 +33,7 @@ const prevSlide = () => {
     slides[slides.length - 1].classList.add('current');
   }
 };
-
+/*
 // Button events
 nextBtn.addEventListener('click', (e) => {
   nextSlide();
@@ -42,7 +42,7 @@ nextBtn.addEventListener('click', (e) => {
 prevBtn.addEventListener('click', (e) => {
   prevSlide();
 });
-
+*/
 // Menu Button Functionality ****************************************
 
 //Select DOM items
@@ -76,3 +76,50 @@ function toggleMenu() {
     showMenu = false;
   }
 }
+
+// GeoLocation Functionality & Map ******************************************
+
+function findMe() {
+  const status = document.querySelector('#status');
+
+  function mapLocation(position) {
+    const lat = position.coords.latitude;
+    const lng = position.coords.longitude;
+
+    status.textContent = '';
+
+    // Sets up Zoom Level of Map
+    const mymap = L.map('mapid').setView([lat, lng], 13);
+
+    // Creates Marker From GeoLocation
+    const marker = L.marker([lat, lng]).addTo(mymap);
+
+    // Sets up tiles For Map
+    L.tileLayer(
+      'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={MAPBOX_ACCESS_TOKEN}',
+      {
+        attribution:
+          'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+        maxZoom: 18,
+        id: 'mapbox/streets-v11',
+        tileSize: 512,
+        zoomOffset: -1,
+        accessToken: '{MAPBOX_ACCESS_TOKEN}',
+      }
+    ).addTo(mymap);
+  }
+
+  function error() {
+    status.textContent = 'Unable to retrieve your location';
+  }
+
+  if (!navigator.geolocation) {
+    status.textContent = 'Geolocation is not supported by your browser';
+  } else {
+    // If Navigator Is Allowed, Run Functions For Map
+    status.textContent = 'Locating…';
+    navigator.geolocation.getCurrentPosition(mapLocation, error);
+  }
+}
+
+document.querySelector('#find-me').addEventListener('click', findMe);

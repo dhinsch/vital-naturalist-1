@@ -74,6 +74,8 @@ body {
   body > .main-article > #find-me {
     text-align: center;
     padding: 0.5rem; }
+  body > .main-article > #mapid {
+    height: 250px; }
   body > .main-footer {
     background-color: #213738;
     color: #e9eae4; }
