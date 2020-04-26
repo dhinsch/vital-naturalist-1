@@ -39,12 +39,41 @@ body {
     background-color: $accent-color;
   }
   > .main-article {
+    padding: 2rem 2rem;
+
+    @include mediaSm {
+      padding: 1rem 0.5rem;
+    }
     > #find-me {
       text-align: center;
       padding: 0.5rem;
     }
     > #mapid {
       height: 250px;
+    }
+
+    > .main-info {
+      padding: 0rem 1rem 1rem 1rem;
+      text-align: center;
+    }
+    > .observation-container {
+      > .single-observation {
+        border: 1px solid $light-green;
+        margin: 2rem 10rem;
+
+        @include mediaSm {
+          margin: 0.5rem;
+        }
+        > .observation-details {
+          margin: auto;
+        }
+
+        > img {
+          padding: 0.2rem;
+          object-fit: contain;
+          margin: auto;
+        }
+      }
     }
   }
   > .main-footer {

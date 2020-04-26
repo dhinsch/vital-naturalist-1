@@ -1,12 +1,13 @@
 .secondary-layout {
+  height: 100vh;
   display: grid;
   grid-template-areas:
-    'header-nav header-nav header-nav header-nav'
-    '. main-article main-article .'
-    '. main-article main-article .'
-    'footer footer footer footer';
-  grid-template-rows: 50px, 1fr, 1fr, 20px;
-  grid-template-columns: repeat(4, 1fr);
+    'header-nav header-nav header-nav'
+    '. main-article .'
+    '. main-article .'
+    'footer footer footer';
+  grid-template-rows: 55px auto auto 20px;
+  grid-template-columns: 150px auto 150px;
 
   @include mediaMd {
     grid-template-areas:
@@ -19,13 +20,24 @@
   > .header-nav {
     grid-area: header-nav;
     @include mediaSm {
-      height: 14vh;
     }
   }
 
   > .main-article {
     grid-area: main-article;
     background-color: #fff;
+    > .observation-container {
+      display: flex;
+      flex-direction: column;
+      > .single-observation {
+        display: flex;
+        flex-direction: row;
+
+        @include mediaSm {
+          flex-direction: column;
+        }
+      }
+    }
   }
 
   > .main-footer {

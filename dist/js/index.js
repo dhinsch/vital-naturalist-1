@@ -85,6 +85,7 @@ function findMe() {
   function mapLocation(position) {
     const lat = position.coords.latitude;
     const lng = position.coords.longitude;
+    const iNatUrl = `https://api.inaturalist.org/v1/observations?lat=${lat}&lng=${lng}&radius=10&per_page=10&order=desc&order_by=created_at`;
 
     status.textContent = '';
 
@@ -96,7 +97,7 @@ function findMe() {
 
     // Sets up tiles For Map
     L.tileLayer(
-      'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={MAPBOX_ACCESS_TOKEN}',
+      'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=MAPBOX_ACCESS_TOKEN',
       {
         attribution:
           'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -104,9 +105,58 @@ function findMe() {
         id: 'mapbox/streets-v11',
         tileSize: 512,
         zoomOffset: -1,
-        accessToken: '{MAPBOX_ACCESS_TOKEN}',
+        accessToken: 'MAPBOX_ACCESS_TOKEN',
       }
     ).addTo(mymap);
+
+    //iNat Observations ******************************
+
+    fetch(iNatUrl)
+      .then((response) => response.json())
+      .then(function (data) {
+        console.log(iNatUrl);
+        let observations = data.results;
+
+        return observations.map(function (observation) {
+          // Reference
+          const newDiv = document.createElement('div');
+          const img = document.createElement('img');
+          const observationContainer = document.querySelector(
+            '.observation-container'
+          );
+
+          //Create Elements
+          const span = document.createElement('span');
+          newDiv.classList.add('single-observation');
+          span.classList.add('observation-details');
+
+          // Set Image Source from iNaturalist API Request
+          img.src = observation.photos[0].url;
+
+          //Set Observation Info
+
+          span.innerText = `
+          
+          Name: ${
+            observation.species_guess != null
+              ? observation.species_guess
+              : 'Unknown'
+          }
+          Date Observed: ${observation.created_at_details.date}
+          URL: ${observation.uri}
+          
+
+          `;
+
+          // Append Observations to Display On Page
+          newDiv.appendChild(img);
+          newDiv.appendChild(span);
+          observationContainer.appendChild(newDiv);
+        });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
 
   function error() {
@@ -114,7 +164,8 @@ function findMe() {
   }
 
   if (!navigator.geolocation) {
-    status.textContent = 'Geolocation is not supported by your browser';
+    status.textContent =
+      'Geolocation is not supported by your browser, please enable Geolocation through your settings.';
   } else {
     // If Navigator Is Allowed, Run Functions For Map
     status.textContent = 'Locating…';

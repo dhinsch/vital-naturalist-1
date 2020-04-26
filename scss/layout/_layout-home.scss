@@ -8,7 +8,7 @@
     'description slider slider'
     'description slider slider'
     'footer footer footer';
-  grid-template-rows: 50px, auto, 20px;
+  grid-template-rows: 55px auto 20px;
   grid-template-columns: repeat(3, 1fr);
 
   @include mediaMd {

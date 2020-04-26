@@ -21,6 +21,7 @@
       integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
       crossorigin=""
     ></script>
+
     <title>Vital Naturalist -- Nature-inspired Artwork & Resources</title>
   </head>
 
@@ -52,13 +53,24 @@
     </header>
 
     <article class="main-article">
-      <h2 class="subtitle">Explore Natural Areas Near You</h2>
+      <h2 class="subtitle">Explore Near You</h2>
+      <div class="main-info">
+        <p>
+          Click 'Find My Location' to see iNaturalist Observations reported near
+          you!
+          <br /><br />
+          Please stay safe & follow all public health safety guidelines when
+          exploring the outdoors!
+        </p>
+      </div>
       <div id="find-me">
-        <button id="find-me" class="actionButton">Find my Location</button
+        <button id="find-me" class="actionButton">Find My Location</button
         ><br />
         <p id="status"></p>
       </div>
       <div id="mapid"></div>
+
+      <div class="observation-container"></div>
     </article>
     <footer class="main-footer">
       <p>
