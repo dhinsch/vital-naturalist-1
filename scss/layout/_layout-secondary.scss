@@ -36,9 +36,14 @@
     > .observation-container {
       display: flex;
       flex-direction: column;
+
       > .single-observation {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
+
+        @include mediaSm {
+          flex-direction: column;
+        }
       }
     }
   }

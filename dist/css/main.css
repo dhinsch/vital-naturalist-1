@@ -43,7 +43,7 @@ a {
     padding: 1rem; }
 
 body {
-  background-color: #d0d7d8; }
+  background-color: #e9eae4; }
   body > .header-nav {
     background-color: #213738; }
   body > .description {
@@ -92,9 +92,12 @@ body {
     body > .main-article > .observation-container > .single-observation {
       border: 1px solid #87a895;
       margin: 2rem 10rem; }
-      @media screen and (max-width: 500px) {
+      @media screen and (min-width: 769px) and (max-width: 1170px) {
         body > .main-article > .observation-container > .single-observation {
           margin: 0.5rem; } }
+      @media screen and (max-width: 768px) {
+        body > .main-article > .observation-container > .single-observation {
+          margin: 0.5rem 0; } }
       body > .main-article > .observation-container > .single-observation > .observation-details {
         margin: auto; }
       body > .main-article > .observation-container > .single-observation > a {
@@ -157,7 +160,10 @@ body {
       flex-direction: column; }
       .secondary-layout > .main-article > .observation-container > .single-observation {
         display: flex;
-        flex-direction: column; }
+        flex-direction: row; }
+        @media screen and (max-width: 500px) {
+          .secondary-layout > .main-article > .observation-container > .single-observation {
+            flex-direction: column; } }
   .secondary-layout > .main-footer {
     grid-area: footer; }
 

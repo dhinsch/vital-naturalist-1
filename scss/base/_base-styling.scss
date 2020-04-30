@@ -1,5 +1,5 @@
 body {
-  background-color: $secondary-color;
+  background-color: $accent-color;
   > .header-nav {
     background-color: $primary-color;
   }
@@ -71,8 +71,11 @@ body {
         border: 1px solid $light-green;
         margin: 2rem 10rem;
 
-        @include mediaSm {
+        @include mediaLg {
           margin: 0.5rem;
+        }
+        @include mediaMd {
+          margin: 0.5rem 0;
         }
         > .observation-details {
           margin: auto;

@@ -98,7 +98,7 @@ function findMe() {
 
     // Sets up tiles For Map
     L.tileLayer(
-      'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=MAPBOX_ACCESS_KEY',
+      'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1Ijoidml0YWxuYXR1cmFsaXN0IiwiYSI6ImNrOWMydTdrdDAwcTgzeGxkMXc2ZTZmcGIifQ.qzKEhMdBQ7IZn_CEm_D8qg',
       {
         attribution:
           'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -106,7 +106,8 @@ function findMe() {
         id: 'mapbox/streets-v11',
         tileSize: 512,
         zoomOffset: -1,
-        accessToken: 'MAPBOX_ACCESS_KEY',
+        accessToken:
+          'pk.eyJ1Ijoidml0YWxuYXR1cmFsaXN0IiwiYSI6ImNrOWMydTdrdDAwcTgzeGxkMXc2ZTZmcGIifQ.qzKEhMdBQ7IZn_CEm_D8qg',
       }
     ).addTo(mymap);
 
