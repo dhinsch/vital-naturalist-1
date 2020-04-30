@@ -26,16 +26,19 @@
   > .main-article {
     grid-area: main-article;
     background-color: #fff;
+
+    > .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
+      grid-gap: 4em;
+    }
+
     > .observation-container {
       display: flex;
       flex-direction: column;
       > .single-observation {
         display: flex;
-        flex-direction: row;
-
-        @include mediaSm {
-          flex-direction: column;
-        }
+        flex-direction: column;
       }
     }
   }

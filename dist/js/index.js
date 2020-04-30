@@ -33,6 +33,7 @@ const prevSlide = () => {
     slides[slides.length - 1].classList.add('current');
   }
 };
+
 /*
 // Button events
 nextBtn.addEventListener('click', (e) => {
@@ -90,14 +91,14 @@ function findMe() {
     status.textContent = '';
 
     // Sets up Zoom Level of Map
-    const mymap = L.map('mapid').setView([lat, lng], 13);
+    const mymap = L.map('mapid').setView([lat, lng], 11);
 
     // Creates Marker From GeoLocation
     const marker = L.marker([lat, lng]).addTo(mymap);
 
     // Sets up tiles For Map
     L.tileLayer(
-      'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=MAPBOX_ACCESS_TOKEN',
+      'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=MAPBOX_ACCESS_KEY',
       {
         attribution:
           'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -105,53 +106,80 @@ function findMe() {
         id: 'mapbox/streets-v11',
         tileSize: 512,
         zoomOffset: -1,
-        accessToken: 'MAPBOX_ACCESS_TOKEN',
+        accessToken: 'MAPBOX_ACCESS_KEY',
       }
     ).addTo(mymap);
 
-    //iNat Observations ******************************
+    // Initialize Marker Array
+    const allMarkers = [[lat, lng]];
+
+    //iNaturalist Observations ******************************
 
     fetch(iNatUrl)
       .then((response) => response.json())
       .then(function (data) {
-        console.log(iNatUrl);
         let observations = data.results;
 
         return observations.map(function (observation) {
-          // Reference
+          // Initialize
           const newDiv = document.createElement('div');
           const img = document.createElement('img');
           const observationContainer = document.querySelector(
             '.observation-container'
           );
 
-          //Create Elements
           const span = document.createElement('span');
           newDiv.classList.add('single-observation');
           span.classList.add('observation-details');
 
+          const link = document.createElement('a');
+          link.setAttribute('class', 'iNatUrl');
+          link.setAttribute('href', `${observation.uri}`);
+          link.textContent = 'See on iNaturalist';
+
           // Set Image Source from iNaturalist API Request
+
           img.src = observation.photos[0].url;
 
           //Set Observation Info
 
           span.innerText = `
-          
           Name: ${
             observation.species_guess != null
               ? observation.species_guess
               : 'Unknown'
           }
-          Date Observed: ${observation.created_at_details.date}
-          URL: ${observation.uri}
-          
-
+          Date Observed: ${observation.created_at_details.month} / ${
+            observation.created_at_details.day
+          } / ${observation.created_at_details.year}
           `;
 
           // Append Observations to Display On Page
+
+          observationContainer.appendChild(newDiv);
           newDiv.appendChild(img);
           newDiv.appendChild(span);
-          observationContainer.appendChild(newDiv);
+          newDiv.appendChild(link);
+
+          //Add Location Markers to Map
+
+          const locationInfo = observation.location.split(',');
+
+          function createNumArray(item) {
+            return parseFloat(item, 10);
+          }
+          const newMarker = locationInfo.map(createNumArray);
+
+          allMarkers.push(newMarker);
+          if (allMarkers.length == 11) {
+            // Loop through allMarkers Array
+            for (var i = 0; i < allMarkers.length; i++) {
+              const marker = new L.marker([
+                allMarkers[i][0],
+                allMarkers[i][1],
+              ]).addTo(mymap);
+            }
+          }
         });
       })
       .catch(function (error) {

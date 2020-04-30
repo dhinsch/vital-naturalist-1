@@ -56,6 +56,16 @@ body {
       padding: 0rem 1rem 1rem 1rem;
       text-align: center;
     }
+
+    > .gallery {
+      padding: 2em 4em;
+
+      > img {
+        object-fit: contain;
+        max-width: 100%;
+      }
+    }
+
     > .observation-container {
       > .single-observation {
         border: 1px solid $light-green;
@@ -68,9 +78,19 @@ body {
           margin: auto;
         }
 
+        > a {
+          margin: auto;
+          color: $light-green;
+
+          &:hover {
+            color: $primary-color;
+          }
+        }
+
         > img {
           padding: 0.2rem;
-          object-fit: contain;
+          object-fit: cover;
+          max-width: 50%;
           margin: auto;
         }
       }

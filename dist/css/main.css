@@ -84,6 +84,11 @@ body {
     body > .main-article > .main-info {
       padding: 0rem 1rem 1rem 1rem;
       text-align: center; }
+    body > .main-article > .gallery {
+      padding: 2em 4em; }
+      body > .main-article > .gallery > img {
+        object-fit: contain;
+        max-width: 100%; }
     body > .main-article > .observation-container > .single-observation {
       border: 1px solid #87a895;
       margin: 2rem 10rem; }
@@ -92,9 +97,15 @@ body {
           margin: 0.5rem; } }
       body > .main-article > .observation-container > .single-observation > .observation-details {
         margin: auto; }
+      body > .main-article > .observation-container > .single-observation > a {
+        margin: auto;
+        color: #87a895; }
+        body > .main-article > .observation-container > .single-observation > a:hover {
+          color: #213738; }
       body > .main-article > .observation-container > .single-observation > img {
         padding: 0.2rem;
-        object-fit: contain;
+        object-fit: cover;
+        max-width: 50%;
         margin: auto; }
   body > .main-footer {
     background-color: #213738;
@@ -137,15 +148,16 @@ body {
   .secondary-layout > .main-article {
     grid-area: main-article;
     background-color: #fff; }
+    .secondary-layout > .main-article > .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
+      grid-gap: 4em; }
     .secondary-layout > .main-article > .observation-container {
       display: flex;
       flex-direction: column; }
       .secondary-layout > .main-article > .observation-container > .single-observation {
         display: flex;
-        flex-direction: row; }
-        @media screen and (max-width: 500px) {
-          .secondary-layout > .main-article > .observation-container > .single-observation {
-            flex-direction: column; } }
+        flex-direction: column; }
   .secondary-layout > .main-footer {
     grid-area: footer; }
 
